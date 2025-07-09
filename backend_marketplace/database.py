@@ -28,3 +28,13 @@ class DatabaseManager:
         )
 
         return self.cursor.lastrowid
+
+    def get_user(self, email: str):
+        self.cursor.execute(
+            """
+        SELECT * FROM users WHERE email = ?;
+        """,
+            (email,),
+        )
+
+        return self.cursor.fetchone()

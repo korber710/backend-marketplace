@@ -14,10 +14,21 @@ class MarketplaceAPI:
             "/api/buyers/register",
             "register_buyer",
             self.register_buyer,
-            methods=["GET", "POST"],
+            methods=["POST"],
+        )
+        self.app.add_url_rule(
+            "/api/sellers/register",
+            "register_seller",
+            self.register_seller,
+            methods=["POST"],
         )
 
     def register_buyer(self):
         data = request.get_json()
-        user_id = self.db.create_user(data["name"], data["email"], data["role"])
+        user_id = self.db.create_user(data["name"], data["email"], "buyer")
+        return jsonify({"id": user_id, "message": "User registered successfully"}), 201
+
+    def register_seller(self):
+        data = request.get_json()
+        user_id = self.db.create_user(data["name"], data["email"], "seller")
         return jsonify({"id": user_id, "message": "User registered successfully"}), 201

@@ -12,7 +12,7 @@ This document outlines the specification for a backend marketplace service that 
 - **Code Formatting**: ruff
 - **Database**: SQLite (MVP1), potentially PostgreSQL for later milestones
 - **Deployment**: Docker Compose
-- **HTTP Server**: Simple HTTP server (Flask or FastAPI)
+- **HTTP Server**: Simple HTTP server (Flask)
 
 ### Categories Supported
 
@@ -316,25 +316,11 @@ CREATE TABLE order_tracking (
 backend-marketplace/
 ├── docs/
 │   └── specification.md
-├── src/
+├── backend_marketplace/
 │   ├── __init__.py
-│   ├── main.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   ├── product.py
-│   │   └── order.py
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── buyers.py
-│   │   └── sellers.py
-│   ├── database/
-│   │   ├── __init__.py
-│   │   ├── connection.py
-│   │   └── migrations.py
-│   └── utils/
-│       ├── __init__.py
-│       └── validation.py
+│   ├── __main__.py
+│   ├── database.py
+│   └── api.py
 ├── tests/
 │   ├── __init__.py
 │   ├── test_users.py
